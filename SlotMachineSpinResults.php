@@ -1,4 +1,5 @@
 <?php
+require_once 'model/player.php'
 /**
 Your code should validate the following request data: hash, coins won, coins bet, player ID
 
@@ -10,4 +11,26 @@ Your code should validate the following request data: hash, coins won, coins bet
 .      Lifetime Spins
 .      Lifetime Average Return
  */
-print_r($_REQUEST);
+$method = $_SERVER['REQUEST_METHOD'];
+$status = 200;
+if('POST' == $method){
+    $input = $_POST;
+} elseif ('Get' == $method) {
+    $input = $_GET;
+} else {
+    $status = 422;
+}
+printf($input);
+if(200 == $status and is_int($input['CoinsBet']) and is_int($input['CoinsWon'])) {
+    $input['CoinsBet'] = (int)$input['CoinsBet'];
+    $input['CoinsWon'] = (int)$input['CoinsWon'];
+} else {
+    $status = 422;
+}
+
+if(200 != $status) {
+    http_response_code($status);
+    return;
+}
+printf($input);
+
