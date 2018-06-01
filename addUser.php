@@ -7,4 +7,4 @@ $data['Credits'] = 10000;
 $data['LifetimeSpins'] = 0
 $data['Password'] = 'cujo';
 $userModel = new user();
-$userModel.add($data)
+$userModel.add($data);
