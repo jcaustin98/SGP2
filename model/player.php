@@ -14,7 +14,7 @@ class player extends MysqlBase
 
     public function get($PlayerID){
         $sql = 'Select PlayerName, LifetimeSpins, LifetimeCoins, Password ';
-        $sql .= ' FROM players';
+        $sql .= ' FROM player';
         $sql .= ' WHERE PlayerID =\'' . $PlayerID . '\'';
 echo "\n" . $sql;
         $results = $this->execQuery($sql);
