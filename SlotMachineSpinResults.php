@@ -18,7 +18,7 @@ $status = 200;
 $input = [];
 if('POST' == $method){
     $input = $_POST;
-} elseif ('Get' == $method) {
+} elseif ('GET' == $method) {
     $input = $_GET;
 } else {
     $status = 422;
@@ -36,4 +36,10 @@ if(200 != $status) {
     return;
 }
 print_r($input);
+$playerModel = new player();
+$row = $playerModel->get($input['PlayerId']);
+if(!$row) { // bad PlayerId
+    http_response_code(422);
+    return;
+}
 

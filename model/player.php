@@ -16,6 +16,7 @@ class player extends MysqlBase
         $sql = 'Select PlayerName, LifetimeSpins, LifetimeCoins, Password ';
         $sql .= ' FROM players';
         $sql .= ' WHERE PlayerID =\'' . $PlayerID . '\'';
+echo "\n" . $sql;
         $results = $this->execQuery($sql);
         if($results){
             return $this->getRow($results);
