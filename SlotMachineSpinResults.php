@@ -13,7 +13,9 @@ require_once 'model/player.php';
  */
 
 $method = $_SERVER['REQUEST_METHOD'];
+echo $method
 $status = 200;
+$input = [];
 if('POST' == $method){
     $input = $_POST;
 } elseif ('Get' == $method) {
@@ -21,7 +23,7 @@ if('POST' == $method){
 } else {
     $status = 422;
 }
-printf($input);
+print_r($input);
 if(200 == $status and is_int($input['CoinsBet']) and is_int($input['CoinsWon'])) {
     $input['CoinsBet'] = (int)$input['CoinsBet'];
     $input['CoinsWon'] = (int)$input['CoinsWon'];
@@ -33,5 +35,5 @@ if(200 != $status) {
     http_response_code($status);
     return;
 }
-printf($input);
+print_r($input);
 
