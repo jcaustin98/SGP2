@@ -13,7 +13,7 @@ class player extends MysqlBase
     }
 
     public function get($PlayerID){
-        $sql = 'Select PlayerName, LifetimeSpins, LifetimeCoins, Password Credits ';
+        $sql = 'Select PlayerName, LifetimeSpins, LifetimeCoins, Password, Credits ';
         $sql .= ' FROM player';
         $sql .= ' WHERE PlayerID =\'' . $PlayerID . '\'';
 
