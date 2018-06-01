@@ -7,9 +7,9 @@ class MysqlBase
         $config = new DBConfig();
         $this->selected_db = $this->getDatabase(
             DBConfig::DatabaseHost,
-            $config::DatabaseUser,
-            $config::DatabasePassword,
-            $config::Database);
+            DBConfig::DatabaseUser,
+            DBConfig::DatabasePassword,
+            DBConfig::Database);
 
     }
 
@@ -22,6 +22,7 @@ class MysqlBase
         if (!$db_selected) {
             die ("Can\'t use db : " . mysqli_error($dbcx));
         }
+        $this->db_connection = $dbcx
         return $db_selected;
     }
 
@@ -29,7 +30,7 @@ class MysqlBase
         $sql = '';
         $sep = '';
         foreach ($values as $name => $val) {
-            $sql .= $sep . $name . "='" .  mysqli_real_escape_string($val) . "'";
+            $sql .= $sep . $name . "='" .  mysqli_real_escape_string($this->db_connection, $val) . "'";
             $sep  = ', ';
         }
         return $sql;

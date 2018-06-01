@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS spin;
-CREATE USER 'spin'@'localhost' IDENTIFIED BY 'Problem2';
-GRANT ALL PRIVILEGES ON spin.* TO 'spin'@'localhost';
+CREATE USER 'webapp'@'localhost' IDENTIFIED BY 'Problem2';
+GRANT ALL PRIVILEGES ON spin.* TO 'webapp'@'localhost';
 FLUSH PRIVILEGES;
 USE spin;
 
