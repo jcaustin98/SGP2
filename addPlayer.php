@@ -5,6 +5,7 @@ $data = [];
 $data['PlayerName'] = 'jeff';
 $data['Credits'] = 10000;
 $data['LifetimeSpins'] = 0;
+$data['LifetimeCoins'] = 0;
 $data['Password'] = 'cujo';
 $userModel = new player();
 $userModel->add($data);
