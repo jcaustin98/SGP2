@@ -35,14 +35,14 @@ if(200 != $status) {
     http_response_code($status);
     return;
 }
-print_r($input);
+
 $playerModel = new player();
 $row = $playerModel->get($input['PlayerId']);
 if(!$row) { // bad PlayerId
     http_response_code(422);
     return;
 }
-print_r($row);
+
 if($row['Password'] != $input['hash']) {
     http_response_code(422);
     return;
@@ -52,4 +52,12 @@ $update['LifetimeSpins'] = $row['LifetimeSpins'] + 1;
 $update['LifetimeCoins'] = $row['LifetimeCoins'] + ($input['CoinsWon'] - $input['CoinsBet']);
 $playerModel->update($input['PlayerId'], $update);
 
+$json = [];
+$json['Player ID'] = $input['PlayerId'];
+$json['Name'] = $row['PlayerName'];
+$json['Credits'] = $row['Credits'];
+$json['Lifetime Spins'] = $update['LifetimeSpins'];
+$json['Lifetime Average Return'] = $update['LifetimeCoins'] / $update['LifetimeSpins'];
 
+header('Content-Type: application/json');
+echo json_encode($json);
