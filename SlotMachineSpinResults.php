@@ -47,3 +47,9 @@ if($row['Password'] != $input['hash']) {
     http_response_code(422);
     return;
 }
+$update = [];
+$update['LifetimeSpins'] = $row['LifetimeSpins'] + 1;
+$update['LifetimeCoins'] = $row['LifetimeCoins'] + ($input['CoinsWon'] - $input['CoinsBet']);
+$playerModel->update($input['PlayerId'], $update);
+
+

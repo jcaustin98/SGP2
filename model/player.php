@@ -16,12 +16,20 @@ class player extends MysqlBase
         $sql = 'Select PlayerName, LifetimeSpins, LifetimeCoins, Password ';
         $sql .= ' FROM player';
         $sql .= ' WHERE PlayerID =\'' . $PlayerID . '\'';
-echo "\n" . $sql;
+
         $results = $this->execQuery($sql);
         if($results){
             return $this->getRow($results);
         } else {
             return $results;
         }
+    }
+
+    public function update($PlayerID, $data) {
+        $safe_values = $this->getSafeValues($data);
+        $sql = 'Update player SET ' . $safe_values;
+        $sql .= ' WHERE PlayerID =\'' . $PlayerID . '\'';
+echo "\n" . $sql;
+        return $this->execQuery($sql);
     }
 }
