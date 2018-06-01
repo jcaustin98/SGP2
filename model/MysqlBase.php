@@ -38,8 +38,8 @@ class MysqlBase
 
     public function execQuery($sql){
         $status = mysqli_query($this->db_connection,$sql);
-        if (!$status)) {
-            return mysqli_error($this->db_connection)); // this should get logged
+        if (!$status) {
+            return mysqli_error($this->db_connection); // this should get logged
         }
         return $status;
     }
