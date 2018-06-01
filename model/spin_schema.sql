@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS player (
 	PlayerName varchar(255) not NULL,
 	Credits int(11) not NULL,
 	LifetimeSpins int(11) not NULL,
+	LifetimeCoins int(11) not NULL,
 	SaltValue varchar(255) not NULL,
 	Password varchar(255) not NULL,
 

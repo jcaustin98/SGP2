@@ -43,4 +43,16 @@ class MysqlBase
         }
         return $status;
     }
+
+    public function getRow($results) {
+        $row = mysqli_fetch_array($results, MYSQLI_ASSOC);
+        if( !$row){
+            return $row;
+        }
+        foreach (array_keys($row) as $key) {
+            $row[$key] = stripslashes($row[$key]);
+        }
+        mysqli_free_result($results);
+        return $row;
+    }
 }

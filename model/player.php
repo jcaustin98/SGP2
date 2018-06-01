@@ -10,6 +10,17 @@ class player extends MysqlBase
         $safe_values = $this->getSafeValues($data);
         $sql = 'Insert INTO player SET ' . $safe_values;
         $this->execQuery($sql);
-        print_r($sql);
+    }
+
+    public function get($PlayerID){
+        $sql = 'Select PlayerName, LifetimeSpins, LifetimeCoins, Password ';
+        $sql .= ' FROM players';
+        $sql .= ' WHERE PlayerID =\'' . $PlayerID . '\'';
+        $results = $this->execQuery($sql);
+        if($results){
+            return $this->getRow($results);
+        } else {
+            return $results;
+        }
     }
 }

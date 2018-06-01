@@ -13,7 +13,7 @@ require_once 'model/player.php';
  */
 
 $method = $_SERVER['REQUEST_METHOD'];
-echo $method
+
 $status = 200;
 $input = [];
 if('POST' == $method){
@@ -23,8 +23,8 @@ if('POST' == $method){
 } else {
     $status = 422;
 }
-print_r($input);
-if(200 == $status and is_int($input['CoinsBet']) and is_int($input['CoinsWon'])) {
+
+if(200 == $status and is_numeric($input['CoinsBet']) and is_numeric($input['CoinsWon'])) {
     $input['CoinsBet'] = (int)$input['CoinsBet'];
     $input['CoinsWon'] = (int)$input['CoinsWon'];
 } else {
