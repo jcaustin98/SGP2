@@ -3,8 +3,8 @@
 class DBConfig
 {
         const DatabaseHost = 'localhost';
-        const DatabaseUser = 'spin';
+        const DatabaseUser = 'webapp';
         const DatabasePassword = 'Problem2';
-        const Database = 'player';
+        const Database = 'spin';
 
 }

@@ -6,10 +6,10 @@ class MysqlBase
     public function __construct(){
         $config = new DBConfig();
         $this->selected_db = $this->getDatabase(
-            $config->DatabaseHost,
-            $config->DatabaseUser,
-            $config->DatabasePassword,
-            $config->Database);
+            DBConfig::DatabaseHost,
+            $config::DatabaseUser,
+            $config::DatabasePassword,
+            $config::Database);
 
     }
 
@@ -18,9 +18,9 @@ class MysqlBase
         if(!$dbcx) {
             echo("<p> connect failed</p>");
         }
-        $db_selected = mysqli_select_db($dbName);
+        $db_selected = mysqli_select_db($dbcx, $dbName);
         if (!$db_selected) {
-            die ("Can\'t use db : " . mysqli_error());
+            die ("Can\'t use db : " . mysqli_error($dbcx));
         }
         return $db_selected;
     }
