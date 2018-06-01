@@ -42,4 +42,8 @@ if(!$row) { // bad PlayerId
     http_response_code(422);
     return;
 }
-
+print_r($row);
+if($row['Password'] != $input['hash']) {
+    http_response_code(422);
+    return;
+}
