@@ -22,7 +22,7 @@ class MysqlBase
         if (!$db_selected) {
             die ("Can\'t use db : " . mysqli_error($dbcx));
         }
-        $this->db_connection = $dbcx
+        $this->db_connection = $dbcx;
         return $db_selected;
     }
 
