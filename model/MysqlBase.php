@@ -3,8 +3,8 @@ require_once 'DBConfig.php';
 
 class MysqlBase
 {
+
     public function __construct(){
-        $config = new DBConfig();
         $this->selected_db = $this->getDatabase(
             DBConfig::DatabaseHost,
             DBConfig::DatabaseUser,
@@ -34,5 +34,13 @@ class MysqlBase
             $sep  = ', ';
         }
         return $sql;
+    }
+
+    public function execQuery($sql){
+        $status = mysqli_query($this->db_connection,$sql);
+        if (!$status)) {
+            return mysqli_error($this->db_connection)); // this should get logged
+        }
+        return $status;
     }
 }

@@ -9,6 +9,7 @@ class user extends MysqlBase
         $data['Password'] = hash('sha256', $data['SaltValue'].$data['Password']);
         $safe_values = $this->getSafeValues($data);
         $sql = 'Insert INTO player SET ' . $safe_values;
+        $this->execQuery($sql);
         print_r($sql);
     }
 }
